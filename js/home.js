@@ -2,7 +2,7 @@ import {getCurrentUser, isAuthenticated} from './auth.js'
 let user = null;
 let userId = null;
 async function initializeHomePage(){
-  user = await.getCurrentUser();
+  user = await getCurrentUser();
   userId = user?.id;
 
   if (userId){
