@@ -158,24 +158,90 @@ nav ul li a.active {
       opacity: 0.05;
       z-index: -1;
     }
-#about {
-    text-align: center;
-    align-content: center;
-    margin: 0 auto;
-    height: 90vh;
-}
-#highlights {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px;
-    height: 90vh;
-}
-#testimonials {
-    text-align: center;
-    padding: 20px;
-    height: 90vh;
-}
+.section-gray {
+      background: #e5e5e5;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+
+    .category {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .category a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .category a:hover {
+      color: #0077cc;
+    }
+
+    .quote {
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .reviews {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .review-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .review-item {
+      width: 150px;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .info-section {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 2rem;
+      gap: 2rem;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .info-text {
+      max-width: 400px;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      background: #ccc;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+ .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
 #contact {
     text-align: center;
     padding: 20px;
