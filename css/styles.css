@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    padding: 15px 0;
+}
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+}
+.logo {
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 5px;
+}
+nav {
+    display: inline-block;
+    gap: 20px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+    font-size: large;
+}
+nav ul li a.active {
+    color: #007bff;
+    font-weight: bold;
+}
+header {
+    background-color: #f8f9fa;
+    text-align: center;
+    align-content: center;
+    margin: 0 auto;
+    height: 90vh;
+}
+#about {
+    text-align: center;
+    align-content: center;
+    margin: 0 auto;
+    height: 90vh;
+}
+#highlights {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    height: 90vh;
+}
+#testimonials {
+    text-align: center;
+    padding: 20px;
+    height: 90vh;
+}
+#contact {
+    text-align: center;
+    padding: 20px;
+    height: 90vh;
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
