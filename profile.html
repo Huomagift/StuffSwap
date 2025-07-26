@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StuffSwap | Profile</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Top Bar/Header -->
+        <section class="top-bar">
+            <div class="menu-icon" onclick="toggleNav()">☰</div>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="#">Categories</a>
+                <a href="signup.html">Sign-up</a>
+                <a href="login.html">Log-in</a>
+                <a href="#">Cart</a>
+            </nav>
+
+            <div class="header-left">
+                <div class="page-title">Profile</div>
+                <div class="logo"><strong>Stuff</strong> Swap</div>
+            </div>
+            
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search | Location">
+                <span class="clear-icon">✕</span>
+            </div>
+            
+            <div class="header-icons">
+                <span class="icon">❤️</span>
+                <span class="icon">🛒</span>
+                <span class="icon">👤</span>
+            </div>
+        </section>
+
+        <!-- Main Content - Profile Section -->
+        <main class="profile-content">
+            <div class="profile-header">
+                <div class="profile-picture">
+                    <div class="profile-avatar">
+                        <span class="avatar-placeholder">👤</span>
+                    </div>
+                    <button class="change-photo-btn">Change Photo</button>
+                </div>
+                
+                <div class="profile-info">
+                    <h1 class="profile-name" id="profileName">Loading...</h1>
+                    <p class="profile-email" id="profileEmail">loading@email.com</p>
+                    <p class="profile-location" id="profileLocation">📍 Location: Loading...</p>
+                    <p class="member-since">Member since <span id="memberSince">Loading...</span></p>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="itemsCount">0</span>
+                    <span class="stat-label">Items Listed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="swapsCount">0</span>
+                    <span class="stat-label">Successful Swaps</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="rating">5.0</span>
+                    <span class="stat-label">Rating</span>
+                </div>
+            </div>
+
+            <div class="profile-sections">
+                <!-- Personal Information Section -->
+                <section class="profile-section">
+                    <h2>Personal Information</h2>
+                    <form class="profile-form" id="personalForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="displayName">Display Name</label>
+                                <input type="text" id="displayName" name="displayName">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="zipcode">Zipcode</label>
+                                <input type="text" id="zipcode" name="zipcode" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone (Optional)</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" name="bio" rows="3" placeholder="Tell others about yourself..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="save-button">Update Information</button>
+                    </form>
+                </section>
+
+                <!-- Security Section -->
+                <section class="profile-section">
+                    <h2>Security</h2>
+                    <form class="profile-form" id="securityForm">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" id="currentPassword" name="currentPassword">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" name="newPassword">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword">
+                        </div>
+                        
+                        <button type="submit" class="save-button">Change Password</button>
+                    </form>
+                </section>
+
+                <!-- Preferences Section -->
+                <section class="profile-section">
+                    <h2>Preferences</h2>
+                    <div class="preferences">
+                        <div class="preference-item">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="emailNotifications" checked>
+                                <span class="toggle-slider"></span>
+                                Email Notifications
+                            </label>
+                        </div>
+                        
+                        <div class="preference-item">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="locationSharing" checked>
+                                <span class="toggle-slider"></span>
+                                Share Location for Nearby Swaps
+                            </label>
+                        </div>
+                        
+                        <div class="preference-item">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="publicProfile">
+                                <span class="toggle-slider"></span>
+                                Public Profile
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Account Actions -->
+                <section class="profile-section">
+                    <h2>Account Actions</h2>
+                    <div class="account-actions">
+                        <button class="action-btn secondary" onclick="exportData()">Export My Data</button>
+                        <button class="action-btn secondary" onclick="deleteAccount()">Delete Account</button>
+                        <button class="action-btn danger" onclick="logout()">Logout</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleNav() {
+            document.getElementById("navLinks").classList.toggle("show");
+        }
+
+        // Load user profile data when page loads
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const user = await Auth.getCurrentUser();
+                if (user) {
+                    loadUserProfile(user);
+                } else {
+                    window.location.href = 'login.html';
+                }
+            } catch (error) {
+                console.error('Error loading profile:', error);
+                window.location.href = 'login.html';
+            }
+        });
+
+        async function loadUserProfile(user) {
+            // Update profile header
+            document.getElementById('profileName').textContent = user.user_metadata?.username || user.email?.split('@')[0] || 'User';
+            document.getElementById('profileEmail').textContent = user.email || 'No email';
+            document.getElementById('profileLocation').textContent = '📍 Location: Not set';
+            document.getElementById('memberSince').textContent = new Date(user.created_at).toLocaleDateString();
+
+            // Load form data
+            document.getElementById('email').value = user.email || '';
+            document.getElementById('username').value = user.user_metadata?.username || '';
+            document.getElementById('displayName').value = user.user_metadata?.display_name || '';
+            
+            // Load profile data from database (if available)
+            try {
+                const supabase = await Auth.initializeSupabase();
+                const { data: profile } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .eq('id', user.id)
+                    .single();
+
+                if (profile) {
+                    document.getElementById('zipcode').value = profile.zipcode || '';
+                    document.getElementById('phone').value = profile.phone || '';
+                    document.getElementById('bio').value = profile.bio || '';
+                    document.getElementById('profileLocation').textContent = `📍 Location: ${profile.zipcode || 'Not set'}`;
+                }
+            } catch (error) {
+                console.log('No profile data found:', error);
+            }
+        }
+
+        // Handle personal information form submission
+        document.getElementById('personalForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitButton = e.target.querySelector('.save-button');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Updating...';
+            submitButton.disabled = true;
+
+            try {
+                const user = await Auth.getCurrentUser();
+                const supabase = await Auth.initializeSupabase();
+                
+                const formData = {
+                    username: document.getElementById('username').value,
+                    display_name: document.getElementById('displayName').value,
+                    email: document.getElementById('email').value,
+                    zipcode: document.getElementById('zipcode').value,
+                    phone: document.getElementById('phone').value,
+                    bio: document.getElementById('bio').value
+                };
+
+                // Update profile in database
+                const { error } = await supabase
+                    .from('profiles')
+                    .upsert({
+                        id: user.id,
+                        ...formData,
+                        updated_at: new Date().toISOString()
+                    });
+
+                if (error) throw error;
+
+                alert('Profile updated successfully!');
+                loadUserProfile(user); // Reload profile data
+                
+            } catch (error) {
+                console.error('Error updating profile:', error);
+                alert('Failed to update profile. Please try again.');
+            } finally {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
+        });
+
+        // Handle security form submission
+        document.getElementById('securityForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newPassword !== confirmPassword) {
+                alert('New passwords do not match!');
+                return;
+            }
+
+            const submitButton = e.target.querySelector('.save-button');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Changing...';
+            submitButton.disabled = true;
+
+            try {
+                const supabase = await Auth.initializeSupabase();
+                
+                // Update password
+                const { error } = await supabase.auth.updateUser({
+                    password: newPassword
+                });
+
+                if (error) throw error;
+
+                alert('Password changed successfully!');
+                e.target.reset();
+                
+            } catch (error) {
+                console.error('Error changing password:', error);
+                alert('Failed to change password. Please try again.');
+            } finally {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
+        });
+
+        // Account action functions
+        async function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    await Auth.signOut();
+                    window.location.href = 'login.html';
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('Logout failed. Please try again.');
+                }
+            }
+        }
+
+        function exportData() {
+            alert('Data export feature coming soon!');
+        }
+
+        function deleteAccount() {
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                alert('Account deletion feature coming soon!');
+            }
+        }
+
+        // Handle preference changes
+        document.querySelectorAll('.preference-item input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                console.log(`${this.id}: ${this.checked}`);
+                // Save preferences to database
+            });
+        });
+    </script>
+</body>
+</html> 
