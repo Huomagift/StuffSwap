@@ -22,6 +22,7 @@ async function initializeHomePage(){
   }
   else{
     showGuestView();
+    //this function is not defined, it might need editing later
   }
 }
 initializeHomePage();
