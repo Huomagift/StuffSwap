@@ -1,113 +1,106 @@
-# 🧺 StuffSwap
+# Stuff Swap
 
-> **A funky local-swap platform built for real humans — not algorithms.**
-> Swap items with people nearby. No price tags. No stress. Just vibes.
+A web application for swapping items with other users.
 
----
+## Setup Instructions
 
-## 🛠️ Tech Stack
+### 1. Database Setup (Required to fix the signup error)
 
-**Frontend:**
+The signup error you're experiencing is due to missing database tables. Follow these steps to fix it:
 
-* HTML
-* CSS
-* JavaScript (Vanilla)
+1. **Go to your Supabase Dashboard**
+   - Navigate to https://supabase.com/dashboard
+   - Select your project
 
-**Backend:**
+2. **Run the Database Setup Script**
+   - Go to the "SQL Editor" in your Supabase dashboard
+   - Copy and paste the contents of `database_setup.sql` into the editor
+   - Click "Run" to execute the script
 
-* Supabase (Auth, Realtime DB, Storage)
-* PostgreSQL (for structured data)
+3. **Verify the Setup**
+   - Go to "Table Editor" in your Supabase dashboard
+   - You should see three new tables: `profiles`, `items`, and `swaps`
 
----
+### 2. Email Verification (Optional but Recommended)
 
-## 🌟 Features
+By default, Supabase requires email verification. To disable this for testing:
 
-* 📍 **Location-Based Swapping**: Discover items near you.
-* 🪪 **User Authentication**: Sign up, log in, and manage your profile.
-* 🖼️ **Upload Items**: Add photos, descriptions, and tags.
-* 🔄 **Propose Trades**: Send and receive swap requests.
-* 🎭 **Weird & Fun UI**: Swap with intuition — not logic.
-* 🔔 **Trade Tracker**: Monitor the status of your proposed swaps.
+1. Go to your Supabase dashboard
+2. Navigate to "Authentication" → "Settings"
+3. Under "Email Auth", uncheck "Enable email confirmations"
 
----
+### 3. Running the Application
 
-## 🎨 Judging Vibes (Hackathon Focus)
-
-| Criteria                   | How We Meet It                                      |
-| -------------------------- | --------------------------------------------------- |
-| 🧠 Unmistakably Human      | Manual swaps, emoji reactions, intuition toggles    |
-| 🧬 Philosophical Edge      | No prices — just vibes. Anti-capitalist energy.     |
-| 🎨 Weirdness & Originality | Retro UI, “toss to pond” mechanic, shake-for-random |
-| 🛠️ Technical Craft        | Clean structure, responsive UI, smooth interactions |
-| 🌍 Cultural Impact         | Promotes hyperlocal community barter culture        |
-
----
-
-## 📁 Project Structure (Frontend)
-
-```
-/stuffswap
-│
-├── index.html              # Landing page
-├── login.html              # Auth - login
-├── signup.html             # Auth - register
-├── dashboard.html          # Item feed, filter by location
-├── add-item.html           # Upload an item
-├── item-details.html       # View item and propose swap
-├── my-swaps.html           # View your swap history
-│
-├── /css
-│   └── styles.css          # Main styles
-│
-├── /js
-│   ├── auth.js             # Login/signup logic with Supabase
-│   ├── items.js            # CRUD for items
-│   ├── swaps.js            # Swap handling
-│   └── utils.js            # Location + helper functions
-│
-└── /assets
-    ├── /images             # Uploaded/user images
-    └── /icons              # Emojis, UI icons
-```
-
----
-
-## 🚀 How to Run Locally
-
-1. **Clone the repo**
-
+1. **Start a local server**
    ```bash
-   git clone https://github.com/yourusername/stuffswap.git
-   cd stuffswap
+   # Using Python (if you have Python installed)
+   python -m http.server 5500
+   
+   # Or using Node.js (if you have Node.js installed)
+   npx http-server -p 5500
+   
+   # Or using Live Server extension in VS Code
    ```
 
-2. **Set up Supabase**
+2. **Open the application**
+   - Navigate to `http://localhost:5500/StuffSwap/`
+   - The signup should now work without database errors
 
-   * Create a Supabase project
-   * Add your tables: users, items, swaps
-   * Enable **Auth**, **Storage**, and **Row Level Security**
-   * Add API keys and URLs to `js/config.js`
+## Features
 
-3. **Open `index.html` in browser**
-   You can also use **Live Server** if you're using VS Code.
+- **User Authentication**: Sign up and login with email/password
+- **User Profiles**: Store user information in the database
+- **Item Management**: Add, view, and manage items for swapping
+- **Swap System**: Request and manage item swaps between users
 
----
+## File Structure
 
-## 💡 Future Improvements
+```
+StuffSwap/
+├── index.html          # Home page
+├── signup.html         # User registration
+├── login.html          # User login
+├── dashboard.html      # User dashboard
+├── js/
+│   └── auth.js         # Authentication module
+├── css/
+│   └── styles.css      # Global styles
+├── database_setup.sql  # Database setup script
+└── README.md           # This file
+```
 
-* Chat between swappers
-* Rating system using emojis
-* Weekly themed swap events
-* PWA support
+## Troubleshooting
 
----
+### Common Issues
 
-## 🧠 Quote on Our Philosophy
+1. **"Database error saving new user"**
+   - Solution: Run the database setup script as described above
 
-> “Not everything has a price. Some things just feel right.”
+2. **"Email not verified"**
+   - Solution: Check your email for verification link, or disable email verification in Supabase settings
 
----
+3. **"Invalid login credentials"**
+   - Solution: Make sure you're using the correct email and password
 
-## 🧑‍💻 Made with love for the CS Girlies Hackathon
+### Database Tables
 
-**By:** StuffSwap team 💖🛍️
+The application uses these tables:
+
+- **`profiles`**: User profile information
+- **`items`**: Items available for swapping
+- **`swaps`**: Swap requests between users
+
+## Security
+
+- Row Level Security (RLS) is enabled on all tables
+- Users can only access their own data
+- Authentication is handled by Supabase Auth
+
+## Development
+
+To modify the application:
+
+1. Edit the HTML files for UI changes
+2. Modify `js/auth.js` for authentication logic
+3. Update `database_setup.sql` for database schema changes
+4. Test changes locally before deploying

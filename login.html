@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StuffSwap | Login</title>
-  <link rel="stylesheet" href="/css/login.css" />
+  <link rel="stylesheet" href="css/login.css" />
+  <script src="js/auth.js"></script>
 </head>
 
 <body>
@@ -16,7 +17,7 @@
     <div class="right-side">
       <div class="login">
         <h2>Log In</h2>
-        <form action="dashboard.html" method="post">
+        <form>
           <label for="email">Email</label><br />
           <input type="text" id="email" name="email" required /><br />
 
@@ -39,6 +40,45 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const form = document.querySelector('form')
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+
+            const email = document.getElementById('email').value
+            const password = document.getElementById('password').value
+
+            // Show loading state
+            const submitButton = form.querySelector('button[type="submit"]')
+            const originalText = submitButton.textContent
+            submitButton.textContent = 'Signing In...'
+            submitButton.disabled = true
+
+            try {
+                console.log("Attempting to sign in user:", email)
+                
+                const result = await Auth.signIn(email, password)
+                
+                if (result.success) {
+                    alert("Login successful!")
+                    window.location.href = 'dashboard.html'
+                } else {
+                    alert("Login failed: " + result.error)
+                }
+            } catch (error) {
+                console.error("Unexpected error:", error)
+                alert("An unexpected error occurred. Please try again or contact support.")
+            } finally {
+                // Reset button state
+                submitButton.textContent = originalText
+                submitButton.disabled = false
+            }
+        })
+    })
+  </script>
 </body>
 
 </html>
