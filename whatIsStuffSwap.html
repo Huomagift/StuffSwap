@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8"/>
+  <meta name = "viewport" content = "width = device-width, initial-scale =1.0"/>
+  <title> Stuff Swap </title>
+  <link rel="stylesheet" href = "styles.css"/>
+</head>
+<body>
+  <div class = "container">
+    <div id = "map" class="map-placeholder">MAP IMG WILL GO HERE...</div>
+
+    <div class = "intro">
+      <h1>Welcome to Stuff Swap</h1>
+      <p>Your neighborhood-powered marketplace.</p>
+      <p>Instead of throwing things away, trade them with someone just blocks away. </p>
+      <p><strong>Stuff Swap</strong> connects you with nearby users by ZIP code who are looking to swap gently-used items - clothes, books, toys, and more. </p>
+    </div>
+
+    <div class = "hashtags">
+      <span>#Sustainability</span>
+      <span>#StuffSwap</span>
+      <span>#Eco-friendly</span>
+    </div>
+
+    <input type = "text" id = "zipInput" placeholder = "Enter your zip code"/>
+    <button onclick = "loadItems()">Find Items to Swap</button>
+
+    <div id = "itemsList"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
