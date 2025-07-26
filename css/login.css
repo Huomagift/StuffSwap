@@ -1,0 +1,102 @@
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .left-side {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .left-side h1 {
+      font-size: 4em;
+      text-align: center;
+      line-height: 1.2;
+      color: #333;
+    }
+
+    .right-side {
+      flex: 1;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login {
+      width: 100%;
+      max-width: 400px;
+      padding: 40px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .login h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    form label {
+      font-weight: bold;
+      color: #333;
+    }
+
+    form input[type="text"],
+    form input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .extra-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .reset-password a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #413c3c;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    form p {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    form p a {
+      color: #007bff;
+      text-decoration: none;
+    }

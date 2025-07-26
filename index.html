@@ -11,27 +11,48 @@
 
 <body>
     <div class="container">
-        <div class="nav-bar">
-            <div class="logo">
-                <h1>Stuff<span>Swap</span></h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#header" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#highlights">Highlights</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="signup.html">Sign up</a></li>
-                </ul>
-            </nav>
-        </div>
+  <header>
+    <div class="menu-icon" onclick="toggleNav()">☰</div>
+    <h2>Stuff Swap App</h2>
+  </header>
 
-        <header>
-            <h1>Welcome to StuffSwap</h1>
-            <p><i>"Not everything has a price. Some things just feel right."</i></p>
-            <a href="signup.html" class="btn">Get Started</a>
-        </header>
+  <nav class="nav-links" id="navLinks">
+    <a href="#">Home</a>
+    <a href="#">Categories</a>
+    <a href="#">Sign-up</a>
+    <a href="#">Log-in</a>
+    <a href="#">Cart</a>
+  </nav>
+
+  <section class="top-bar">
+    <div><strong>Stuff</strong> Swap</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search">
+    </div>
+    <div>
+      <button onclick="location.href='signup.html'">Sign-up</button>
+      <button onclick="location.href='login.html'">Log-in</button>
+    </div>
+  </section>
+
+  <div class="category-bar">
+    <a href="#">Clothing</a>
+    <a href="#">Furniture</a>
+    <a href="#">Appliances</a>
+    <a href="#">Electronics</a>
+    <a href="#">Toys</a>
+  </div>
+
+  <section class="hero">
+    <div class="icon-bg"></div>
+    <h1><strong>Stuff</strong> Swap</h1>
+    <p>
+      From books and toys to fashion and tech, discover tailored exchanges that match your style, save you money,
+      and help reduce waste.<br><br>
+      <em>Fast, fun, and free to join. It’s swapping made smart.</em>
+    </p>
+    <button>Swap Now</button>
+  </section>
 
         <section id="about">
             <h2>About Us</h2>
@@ -64,10 +85,31 @@
         </section>
 
         <footer>
-            <p>&copy; 2025 StuffSwap. All rights reserved.</p>
-            <p>Follow us on <a href="#">Twitter</a>, <a href="#">Facebook</a>, and <a href="#">Instagram</a>.</p>
+            <h3>Explore Stuff Swap</h3>
+    <div class="footer-links">
+      <a href="#">Home</a>
+      <a href="#">Browse Items</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="#">Sustainability Tips</a>
+      <a href="#">FAQs</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="footer-socials">
+      <p>Connect with us:</p>
+      <a href="#">Instagram</a> |
+      <a href="#">Facebook</a> |
+      <a href="#">X (Twitter)</a>
+    </div>
+    <p style="margin-top: 1rem; font-size: 0.8rem;">© 2025 Stuff Swap. All rights reserved.</p>
         </footer>
     </div>
+
+
+    <script>
+    function toggleNav() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
 </body>
 
 </html>

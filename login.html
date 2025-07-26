@@ -2,31 +2,43 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StuffSwap | Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StuffSwap | Login</title>
+  <link rel="stylesheet" href="/css/login.css" />
 </head>
 
 <body>
-    <div class="login">
-        <div class="switch">
-            <a href="login.html">Login</a>
-            <a href="signup.html">Sign Up</a>
-        </div>
-        <h2>Welcome Back!</h2>
-        <form action="dashboard.html" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
-            <a>Forgot your password? <a href="#">Reset it</a></a>
-            <button type="submit">Login</button>
-            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
-            <p>Or <a href="index.html">return to home</a></p>
-        </form>
+  <div class="container">
+    <div class="left-side">
+      <h1>Stuff<br>Swap</h1>
     </div>
+    <div class="right-side">
+      <div class="login">
+        <h2>Log In</h2>
+        <form action="dashboard.html" method="post">
+          <label for="email">Email</label><br />
+          <input type="text" id="email" name="email" required /><br />
+
+          <label for="password">Password</label><br />
+          <input type="password" id="password" name="password" required /><br />
+
+          <div class="extra-options">
+            <div class="remember-me">
+              <input type="checkbox" id="remember" name="remember" />
+              <label for="remember">Remember me</label>
+            </div>
+            <div class="reset-password">
+              <a href="reset_password.html">Forgot your password?</a>
+            </div>
+          </div>
+
+          <button type="submit">Login</button>
+          <p><a href="signup.html">Create account</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
