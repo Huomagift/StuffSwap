@@ -26,3 +26,24 @@ export async function loadCartItems(userId){
     console.error('Error loading cart items:', error)
   }
 }
+export async function loadItems() {
+const zip=document.getElementbyId('zipInput).value
+if (!zip) return alert("Please enter a zip code!");
+
+const {data, error} = await supabase 
+  .from('swap_items')
+  .select('*')
+  .eq('zip_code', zip);
+if (error){
+  console.error("Error loading items:", error);
+  return;
+}
+const container = document.getElementById('itemsList');
+  container.innerHTML='';
+if (data.length === 0){
+container.textContent('No items found near you!');
+  itemDiv.className='item';
+  itemDiv.textContent = `${item.item_name}: ${item.description}`;
+    container.appendChild(itemDiv);
+  });
+}
