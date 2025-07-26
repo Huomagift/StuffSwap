@@ -2,110 +2,371 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StuffSwap | Home</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StuffSwap | Home</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 100%;
+      margin: auto;
+    }
+
+    header {
+      background-color: #222;
+      color: #fff;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .menu-icon {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #444;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    .nav-links a {
+      color: #fff;
+      padding: 1rem;
+      text-decoration: none;
+      border-bottom: 1px solid #555;
+    }
+
+    .nav-links.show {
+      display: flex;
+    }
+
+    .top-bar {
+      background-color: #fff;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .search-bar input {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      width: 200px;
+    }
+
+    .category-bar {
+      display: flex;
+      background: #e2e2e2;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0.5rem 0;
+    }
+
+    .category-bar a {
+      padding: 0.5rem 1rem;
+      background: #ccc;
+      text-decoration: none;
+      color: #000;
+      border-radius: 4px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: #f0f0f0;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      color: #666;
+    }
+
+    .hero button {
+      padding: 0.75rem 1.5rem;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .icon-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('illustration-icons.png');
+      background-repeat: repeat;
+      opacity: 0.05;
+      z-index: -1;
+    }
+
+    .section-gray {
+      background: #e5e5e5;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+
+    .category a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .category a:hover {
+      color: #0077cc;
+    }
+
+    .quote {
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .reviews {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .review-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .review-item {
+      width: 150px;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-section {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 2rem;
+      gap: 2rem;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .info-text {
+      max-width: 400px;
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      background: #ccc;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+
+    #contact {
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer a {
+      color: #fff;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-socials {
+      margin-top: 1rem;
+    }
+  </style>
 </head>
 
-
 <body>
-    <div class="container">
-  <header>
-    <div class="menu-icon" onclick="toggleNav()">☰</div>
-    <h2>Stuff Swap App</h2>
-  </header>
+  <div class="container">
+    
+    <section class="top-bar">
+        
+      <div class="menu-icon" onclick="toggleNav()">☰</div>
+      
 
-  <nav class="nav-links" id="navLinks">
-    <a href="#">Home</a>
-    <a href="#">Categories</a>
-    <a href="#">Sign-up</a>
-    <a href="#">Log-in</a>
-    <a href="#">Cart</a>
-  </nav>
+    <nav class="nav-links" id="navLinks">
+      <a href="#">Home</a>
+      <a href="#">Categories</a>
+      <a href="signup.html">Sign-up</a>
+      <a href="login.html">Log-in</a>
+      <a href="#">Cart</a>
+    </nav>
 
-  <section class="top-bar">
-    <div><strong>Stuff</strong> Swap</div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search">
+      <div><strong>Stuff</strong> Swap</div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search">
+      </div>
+      <div>
+        <button onclick="location.href='signup.html'">Sign-up</button>
+        <button onclick="location.href='login.html'">Log-in</button>
+        <p>favourites icon</p>
+        <p>cart icon</p>
+        <p>user profile icon</p>
+      </div>
+    </section>
+
+    <div class="category-bar">
+      <a href="#">Clothing</a>
+      <a href="#">Furniture</a>
+      <a href="#">Appliances</a>
+      <a href="#">Electronics</a>
+      <a href="#">Toys</a>
     </div>
-    <div>
-      <button onclick="location.href='signup.html'">Sign-up</button>
-      <button onclick="location.href='login.html'">Log-in</button>
-    </div>
-  </section>
 
-  <div class="category-bar">
-    <a href="#">Clothing</a>
-    <a href="#">Furniture</a>
-    <a href="#">Appliances</a>
-    <a href="#">Electronics</a>
-    <a href="#">Toys</a>
+    <section class="hero">
+      <div class="icon-bg"></div>
+      <h1><strong>Stuff</strong> Swap</h1>
+      <p>
+        From books and toys to fashion and tech, discover tailored exchanges that match your style,
+        save you money, and help reduce waste.<br><br>
+        <em>Fast, fun, and free to join. It’s swapping made smart.</em>
+      </p>
+      <button>Swap Now</button>
+    </section>
+
+    <section class="info-section">
+      <div class="info-map">
+        <iframe src="https://www.google.com/maps/embed?..." frameborder="0"></iframe>
+      </div>
+      <div class="info-text">
+        <p>
+          Welcome to Stuff Swap – your neighborhood-powered marketplace. Trade items nearby and reduce waste.
+        </p>
+        <p>
+          From clothes to books, toys, and more, Stuff Swap connects you with people looking to exchange gently-used items. Live sustainably and save money.
+        </p>
+      </div>
+    </section>
+
+    <div class="buttons">
+      <button class="btn">#Sustainability</button>
+      <button class="btn">#StuffSwap</button>
+      <button class="btn">#Eco-friendly</button>
+    </div>
+
+    <section class="section-gray">
+      <h2>Wide selection of items to swap</h2>
+      <div class="categories">
+        <div class="category"><a href="#"><span>⭕</span><span>Clothes</span></a></div>
+        <div class="category"><a href="#"><span>⭕</span><span>Furniture</span></a></div>
+        <div class="category"><a href="#"><span>⭕</span><span>Appliances</span></a></div>
+        <div class="category"><a href="#"><span>⭕</span><span>Electronics</span></a></div>
+        <div class="category"><a href="#"><span>⭕</span><span>Toys</span></a></div>
+        <div class="category"><a href="#"><span>➡</span><span>Swap Now</span></a></div>
+      </div>
+    </section>
+
+    <div class="quote">
+      “...your AI-powered hub for trading what you have for what you love”
+    </div>
+
+    <section class="reviews">
+      <h3>Our Reviews</h3>
+      <div class="review-list">
+        <div class="review-item">⭐⭐⭐⭐⭐<p>“Stuff Swap made it super easy to find a new home for my kid’s old toys!”</p></div>
+        <div class="review-item">⭐⭐⭐⭐⭐<p>“I’ve traded across states without spending a dime. Amazing!”</p></div>
+        <div class="review-item">⭐⭐⭐⭐⭐<p>“It’s great for the environment and the community.”</p></div>
+        <div class="review-item">⭐⭐⭐⭐⭐<p>“Awesome platform for conscious consumers.”</p></div>
+        <div class="review-item">⭐⭐⭐⭐⭐<p>“Something for everyone, literally!”</p></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>If you have any questions or feedback, feel free to reach out to us via <a href="mailto:swaphackathon2025@gmail.com">OUR EMAIL</a>.</p>
+    </section>
+
+    <footer>
+      <h3>Explore Stuff Swap</h3>
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#">Browse Items</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="#">Sustainability Tips</a>
+        <a href="#">FAQs</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="footer-socials">
+        <p>Connect with us:</p>
+        <a href="#">Instagram</a> |
+        <a href="#">Facebook</a> |
+        <a href="#">X (Twitter)</a>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.8rem;">© 2025 Stuff Swap. All rights reserved.</p>
+    </footer>
   </div>
 
-  <section class="hero">
-    <div class="icon-bg"></div>
-    <h1><strong>Stuff</strong> Swap</h1>
-    <p>
-      From books and toys to fashion and tech, discover tailored exchanges that match your style, save you money,
-      and help reduce waste.<br><br>
-      <em>Fast, fun, and free to join. It’s swapping made smart.</em>
-    </p>
-    <button>Swap Now</button>
-  </section>
-
-        <section id="about">
-            <h2>About Us</h2>
-            <p>StuffSwap is a community-driven platform where you can swap items with others. Whether you're looking to declutter or find something new, StuffSwap makes it easy.</p>
-        </section>
-
-        <section id="highlights">
-            <h2>Highlights</h2>
-            <ul>
-                <li>Easy to use interface</li>
-                <li>Community-driven</li>
-                <li>Secure transactions</li>
-                <li>Wide range of items available</li>
-            </ul>
-        </section>
-
-        <section id="testimonials">
-            <h2>What Our Users Say</h2>
-            <blockquote>
-                <p>"StuffSwap has changed the way I declutter my home!" - Jane Doe</p>
-            </blockquote>
-            <blockquote>
-                <p>"I found exactly what I was looking for, and it was so easy to swap!" - John Smith</p>
-            </blockquote>
-        </section>
-
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>If you have any questions or feedback, feel free to reach out to us via <a href="mailto:swaphackathon2025@gmail.com">OUR EMAIL</a>.</p>
-        </section>
-
-        <footer>
-            <h3>Explore Stuff Swap</h3>
-    <div class="footer-links">
-      <a href="#">Home</a>
-      <a href="#">Browse Items</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="#">Sustainability Tips</a>
-      <a href="#">FAQs</a>
-      <a href="#">Contact Us</a>
-    </div>
-    <div class="footer-socials">
-      <p>Connect with us:</p>
-      <a href="#">Instagram</a> |
-      <a href="#">Facebook</a> |
-      <a href="#">X (Twitter)</a>
-    </div>
-    <p style="margin-top: 1rem; font-size: 0.8rem;">© 2025 Stuff Swap. All rights reserved.</p>
-        </footer>
-    </div>
-
-
-    <script>
+  <script>
     function toggleNav() {
       document.getElementById("navLinks").classList.toggle("show");
     }
