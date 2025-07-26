@@ -1,4 +1,5 @@
 import {getCurrentUser, isAuthenticated} from './auth.js'
+import {loadUserFavorites, loadSwapRequests, loadCartItems} from './userActions.js'
 let user = null;
 let userId = null;
 async function initializeHomePage(){
