@@ -7,7 +7,7 @@ export async function loadUserFavorites(userId){
     console.error('Error loading favorites:', error)
   }
 }
-export async loadSwapRequests(userId){
+export async function loadSwapRequests(userId){
   try{
     const response = await fetch(`/api.swaps?userId=${userId}`);
     const data = await response.json();
@@ -16,7 +16,8 @@ export async loadSwapRequests(userId){
     console.error('Error loading swap requests:', error)
   }
 }
-export async loadCartItems(userId){
+
+export async function loadCartItems(userId){
   try{
     const response = await fetch(`/api.cartItems?userId=${userId}`);
     const data = await response.json();
