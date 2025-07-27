@@ -937,3 +937,238 @@ footer a {
       font-size: 3rem;
     }
   }
+
+  /* What is Stuff Swap Page Styles */
+  .map-placeholder {
+    background: linear-gradient(135deg, #6c63ff, #5a52d5);
+    color: white;
+    padding: 3rem;
+    text-align: center;
+    border-radius: 15px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+  }
+
+  .map-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .map-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+
+  .intro {
+    text-align: center;
+    padding: 3rem 0;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .intro h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .hashtags {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .hashtags span {
+    background: #f0f0f0;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .search-section {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .search-section input {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e1e1e1;
+    border-radius: 25px;
+    font-size: 1rem;
+    min-width: 200px;
+  }
+
+  .search-section input:focus {
+    outline: none;
+    border-color: #6c63ff;
+  }
+
+  .search-btn {
+    background: linear-gradient(135deg, #6c63ff, #5a52d5);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+  }
+
+  .items-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 1.1rem;
+  }
+
+  .error {
+    text-align: center;
+    padding: 2rem;
+    color: #e53e3e;
+    font-size: 1.1rem;
+  }
+
+  .no-items {
+    text-align: center;
+    padding: 3rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+  }
+
+  .no-items h3 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  .no-items p {
+    color: #666;
+  }
+
+  .item-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 2rem;
+  }
+
+  .item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .item-image {
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .item-info {
+    padding: 1.5rem;
+  }
+
+  .item-info h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .item-description {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0 0 1rem 0;
+  }
+
+  .item-category,
+  .item-condition {
+    color: #888;
+    font-size: 0.9rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .view-item-btn {
+    background: linear-gradient(135deg, #6c63ff, #5a52d5);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .view-item-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+  }
+
+  /* Responsive design for what is Stuff Swap page */
+  @media (max-width: 768px) {
+    .intro h1 {
+      font-size: 2rem;
+    }
+
+    .map-placeholder {
+      padding: 2rem;
+      margin: 1rem 0;
+    }
+
+    .map-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .search-section {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .search-section input {
+      min-width: 250px;
+    }
+
+    .hashtags {
+      gap: 0.5rem;
+    }
+
+    .hashtags span {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }

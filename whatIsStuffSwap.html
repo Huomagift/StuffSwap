@@ -1,33 +1,84 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
-  <meta charset = "UTF-8"/>
-  <meta name = "viewport" content = "width = device-width, initial-scale =1.0"/>
-  <title> Stuff Swap </title>
-  <link rel="stylesheet" href = "styles.css"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What is Stuff Swap?</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
 </head>
 <body>
-  <div class = "container">
-    <div id = "map" class="map-placeholder">MAP IMG WILL GO HERE...</div>
+  <div class="container">
+    <!-- Header -->
+    <section class="top-bar">
+      <div class="menu-icon" onclick="toggleNav()">☰</div>
+      
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="#">Categories</a>
+        <a href="signup.html">Sign-up</a>
+        <a href="login.html">Log-in</a>
+        <a href="#">Cart</a>
+      </nav>
 
-    <div class = "intro">
-      <h1>Welcome to Stuff Swap</h1>
-      <p>Your neighborhood-powered marketplace.</p>
-      <p>Instead of throwing things away, trade them with someone just blocks away. </p>
-      <p><strong>Stuff Swap</strong> connects you with nearby users by ZIP code who are looking to swap gently-used items - clothes, books, toys, and more. </p>
+      <div class="header-left">
+        <div class="page-title">About</div>
+        <div class="logo"><strong>Stuff</strong> Swap</div>
+      </div>
+      
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Search | Location">
+        <span class="clear-icon">✕</span>
+      </div>
+      
+      <div class="header-icons">
+        <span class="icon">❤️</span>
+        <span class="icon">🛒</span>
+        <span class="icon">👤</span>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <div id="map" class="map-placeholder">
+      <div class="map-content">
+        <h2>📍 Find Items Near You</h2>
+        <p>Enter your ZIP code to discover items in your neighborhood</p>
+      </div>
     </div>
 
-    <div class = "hashtags">
+    <!-- Intro Section -->
+    <div class="intro">
+      <h1>Welcome to Stuff Swap</h1>
+      <p>Your neighborhood-powered marketplace.</p>
+      <p>Instead of throwing things away, trade them with someone just blocks away.</p>
+      <p><strong>Stuff Swap</strong> connects you with nearby users by ZIP code who are looking to swap gently-used items - clothes, books, toys, and more.</p>
+    </div>
+
+    <!-- Hashtags -->
+    <div class="hashtags">
       <span>#Sustainability</span>
       <span>#StuffSwap</span>
       <span>#Eco-friendly</span>
     </div>
 
-    <input type = "text" id = "zipInput" placeholder = "Enter your zip code"/>
-    <button onclick = "loadItems()">Find Items to Swap</button>
+    <!-- Search Section -->
+    <div class="search-section">
+      <input type="text" id="zipInput" placeholder="Enter your zip code"/>
+      <button onclick="loadItems()" class="search-btn">Find Items to Swap</button>
+    </div>
 
-    <div id = "itemsList"></div>
+    <!-- Results Section -->
+    <div id="itemsList" class="items-container"></div>
   </div>
-  <script src="userActions.js"></script>
+
+  <script src="js/userActions.js"></script>
+  <script src="js/whatIsStuffSwapBackend.js"></script>
+  <script>
+    function toggleNav() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
 </body>
 </html>
