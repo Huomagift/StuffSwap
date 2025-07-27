@@ -1,8 +1,9 @@
 import {getCurrentUser, isAuthenticated} from './auth.js'
+import {loadUserFavorites, loadSwapRequests, loadCartItems} from './userActions.js'
 let user = null;
 let userId = null;
 async function initializeHomePage(){
-  user = await.getCurrentUser();
+  user = await getCurrentUser();
   userId = user?.id;
 
   if (userId){
@@ -21,6 +22,7 @@ async function initializeHomePage(){
   }
   else{
     showGuestView();
+    //this function is not defined, it might need editing later
   }
 }
 initializeHomePage();

@@ -1,13 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StuffSwap | Dashboard</title>
+    <title>StuffSwap | Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
 </head>
+
 <body>
-    <p>This is our slogan</p>
-    <p>This is how our SWAP NOW page works</p>
-    <p></p>
+    <div class="container">
+
+        <!-- Header Section -->
+        <section class="top-bar">
+            <div class="menu-icon" onclick="toggleNav()">☰</div>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="whatIsStuffSwap.html">About</a>
+                <a href="favorites.html">Favorites</a>
+                <a href="cart.html">Cart</a>
+                <a href="profile.html">Profile</a>
+                <a href="login.html">Login</a>
+            </nav>
+
+            <div class="header-left">
+                <div class="page-title">Home</div>
+                <div class="logo"><strong>Stuff</strong> Swap</div>
+            </div>
+
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search Stuff">
+                <span class="clear-icon">✕</span>
+            </div>
+
+            <div class="header-icons">
+                <a href="favorites.html" class="icon">❤️</a>
+                <a href="cart.html" class="icon">🛒</a>
+                <a href="profile.html" class="icon">👤</a>
+            </div>
+        </section>
+
+        <!-- Sub-navigation -->
+        <div class="sub-nav">
+            <a href="index.html">Home</a>
+            <a href="whatIsStuffSwap.html">About</a>
+            <a href="favorites.html">Favorites</a>
+            <a href="cart.html">Cart</a>
+            <a href="profile.html">Profile</a>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1><strong>Stuff</strong> Swap</h1>
+                <p>
+                    From books and toys to fashion and tech, discover tailored exchanges that match your style, save you
+                    money, and help reduce waste.
+
+                    Fast, fun, and free to join, it's swapping made smart.
+                    </p>
+                <button class="hero-btn" onclick="location.href='whatIsStuffSwap.html'">Swap Now</button>
+            </div>
+
+            <!-- Decorative Icons -->
+            <div class="hero-icons">
+                <div class="icon-item">👕</div>
+                <div class="icon-item">🪴</div>
+                <div class="icon-item">📚</div>
+                <div class="icon-item">💡</div>
+                <div class="icon-item">👜</div>
+                <div class="icon-item">👟</div>
+                <div class="icon-item">📷</div>
+                <div class="icon-item">☕</div>
+            </div>
+        </section>
+
+        <!-- What is Stuff Swap Section -->
+        <section class="what-is-section">
+            <h2>What is Stuff Swap</h2>
+            <div class="what-is-content">
+                <div class="map-placeholder">
+                    <div class="map-content">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.5113070506625!2d106.70042331480037!3d10.776923692322846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3e3bbeb35f%3A0x4f3d509dbf90867d!2sHo%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2s!4v1619642020163!5m2!1sen!2s"
+                            allowfullscreen="" loading="lazy" style="width: 100%;
+      height: 400px;
+      border: 0;">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="what-is-text">
+                    <p>
+                        Stuff Swap is a platform that connects people who want to swap items. Instead of throwing things
+                        away, trade them with someone just blocks away.
+                    </p>
+                    <p>
+                        Stuff Swap connects you with nearby users by ZIP code who are looking to swap gently-used items
+                        - clothes, books, toys, and more.
+                    </p>
+                    <div class="hashtags">
+                        <span>#Sustainability</span>
+                        <span>#StuffSwap</span>
+                        <span>#Eco-friendly</span>
+                    </div>
+                    <div class="search-section">
+                        <input type="text" placeholder="Enter your ZIP code">
+                        <button class="search-btn">Search</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Swap Now Section -->
+        <section class="swap-now-section">
+            <h2>Swap Now</h2>
+            <h3>WIDE SELECTION OF ITEMS TO SWAP</h3>
+            <div class="category-grid">
+                <div class="category-item">
+                    <div class="category-icon">👕</div>
+                    <span>CLOTHES</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">🛋️</div>
+                    <span>FURNITURE</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">🪴</div>
+                    <span>LIVINGWARE</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">💻</div>
+                    <span>ELECTRONICS</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">🧸</div>
+                    <span>TOYS</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">➡️</div>
+                    <span>SWAP NOW</span>
+                </div>
+            </div>
+            <p class="tagline">Find your next treasure! Swap what you have for what you need.</p>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews-section">
+      <div class="reviews-header">
+        <h2>Our Reviews</h2>
+        <p class="reviews-subtitle">See what our community says about Stuff Swap</p>
+      </div>
+      <div class="review-grid">
+        <div class="review-card">
+          <div class="review-avatar">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Bob Ross">
+          </div>
+          <div class="review-stars">⭐⭐⭐⭐☆</div>
+          <div class="review-name">Bob Ross</div>
+          <div class="review-text">"...Stuff Swap made it ridiculously easy to trade for things I actually wanted. Their AI matched me with someone local who needed my old camera—and I scored a vintage record player in return. Brilliant concept!"</div>
+          <div class="review-tags">
+            <span class="tag yellow">#worthit</span>
+            <span class="tag green">#sustainability</span>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-avatar">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" alt="Miguel Hernandez">
+          </div>
+          <div class="review-stars">⭐⭐⭐⭐☆</div>
+          <div class="review-name">Miguel Hernandez</div>
+          <div class="review-text">"Signed up just to get rid of extra books, and ended up discovering rare collectibles I didn't even know existed."</div>
+          <div class="review-tags">
+            <span class="tag green">#sustainability</span>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-avatar">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Zoya Zehra">
+          </div>
+          <div class="review-stars">⭐⭐⭐⭐☆</div>
+          <div class="review-name">Zoya Zehra</div>
+          <div class="review-text">"Instead of dumping things in the trash, I've found new homes for them—and found new favorites for myself."</div>
+          <div class="review-tags">
+            <span class="tag pink">#SwapnotShop</span>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-avatar">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face" alt="Sophia Moore">
+          </div>
+          <div class="review-stars">⭐⭐⭐⭐☆</div>
+          <div class="review-name">Sophia Moore</div>
+          <div class="review-text">"...amazing for parents who have bins of baby clothes."</div>
+          <div class="review-tags">
+            <span class="tag blue">#CircularLiving</span>
+            <span class="tag pink">#SwapnotShop</span>
+            <span class="tag green">#sustainability</span>
+            <span class="tag yellow">#worthit</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+      <div class="footer-content">
+        <!-- Left Section - Branding -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-text">STUFF</span>
+            <span class="logo-accent">SWAP</span>
+          </div>
+          <p class="footer-tagline">Thoughtful swapping for growing communities.</p>
+          <p class="footer-copyright">© 2024 Stuff Swap. Community Exchange Platform. All Rights Reserved.</p>
+        </div>
+
+        <!-- Middle Section - Newsletter -->
+        <div class="footer-newsletter">
+          <h3>COMMUNITY INSIGHTS FOR CLEVER SWAPPERS</h3>
+          <h4>DIRECT TO YOUR INBOX</h4>
+          <div class="newsletter-form">
+            <input type="email" placeholder="YOUR E-MAIL" class="newsletter-input">
+            <button class="newsletter-btn">SUBSCRIBE</button>
+          </div>
+        </div>
+
+        <!-- Right Section - Social & Contact -->
+        <div class="footer-contact">
+          <div class="social-section">
+            <h3>FOLLOW US</h3>
+            <div class="social-icons">
+              <a href="#" class="social-icon">📷</a>
+              <a href="#" class="social-icon">👥</a>
+              <a href="#" class="social-icon">🐦</a>
+            </div>
+          </div>
+          <div class="contact-section">
+            <h3>CONTACT US</h3>
+            <p class="contact-info">support@stuffswap.com</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Legal Links -->
+      <div class="footer-legal">
+        <a href="#" class="legal-link">PRIVACY POLICY</a>
+        <a href="#" class="legal-link">TERMS AND CONDITIONS</a>
+      </div>
+    </footer>
+  </div>
+
+    <script>
+        function toggleNav() {
+            document.getElementById("navLinks").classList.toggle("show");
+        }
+    </script>
 </body>
+
 </html>

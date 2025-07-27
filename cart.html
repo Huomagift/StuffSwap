@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | StuffSwap</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/config.dev.js"></script>
+  <script src="js/auth.js"></script>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header Section -->
+    <section class="top-bar">
+      <div class="menu-icon" onclick="toggleNav()">☰</div>
+      
+          <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="whatIsStuffSwap.html">About</a>
+      <a href="favorites.html">Favorites</a>
+      <a href="cart.html">Cart</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+
+      <div class="header-left">
+        <div class="page-title">Cart</div>
+        <div class="logo"><strong>Stuff</strong> Swap</div>
+      </div>
+      
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Search Stuff">
+        <span class="clear-icon">✕</span>
+      </div>
+      
+      <div class="header-icons">
+        <a href="favorites.html" class="icon">❤️</a>
+        <a href="cart.html" class="icon active">🛒</a>
+        <a href="profile.html" class="icon">👤</a>
+      </div>
+    </section>
+
+    <!-- Cart Content -->
+    <div class="cart-content">
+      <div class="cart-header">
+        <h1>Cart</h1>
+        <p class="cart-subtitle">Items you want to swap</p>
+      </div>
+
+      <!-- Main Cart Layout -->
+      <div class="cart-main-layout">
+        <!-- Cart Summary Panel (Left Side) -->
+        <div class="cart-summary-panel">
+          <div class="cart-summary">
+            <h3>Cart Summary</h3>
+            <div class="summary-item">
+              <span>Items:</span>
+              <span id="itemCount">0</span>
+            </div>
+            <div class="summary-item">
+              <span>Total Value:</span>
+              <span id="totalValue">$0</span>
+            </div>
+            <div class="summary-actions">
+              <button class="clear-cart-btn" onclick="clearCartItems()">Clear Cart</button>
+              <button class="checkout-btn" onclick="proceedToSwap()">Proceed to Swap</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Items Area (Right Side) -->
+        <div class="cart-items-area">
+          <!-- Cart Items Container -->
+          <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+            <div class="loading-state">
+              <div class="spinner"></div>
+              <p>Loading your cart...</p>
+            </div>
+          </div>
+
+          <!-- Empty Cart State -->
+          <div class="empty-cart" id="emptyCart" style="display: none;">
+            <div class="empty-icon">🛒</div>
+            <h2>Your cart is empty</h2>
+            <p>Start browsing to find items you love!</p>
+            <button class="browse-btn" onclick="location.href='index.html'">Browse Items</button>
+          </div>
+
+          <!-- Error State -->
+          <div class="error-state" id="errorState" style="display: none;">
+            <div class="error-icon">⚠️</div>
+            <h2>Something went wrong</h2>
+            <p>Unable to load your cart. Please try again.</p>
+            <button class="retry-btn" onclick="loadCart()">Retry</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <!-- Left Section - Branding -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-text">STUFF</span>
+            <span class="logo-accent">SWAP</span>
+          </div>
+          <p class="footer-tagline">Thoughtful swapping for growing communities.</p>
+          <p class="footer-copyright">© 2024 Stuff Swap. Community Exchange Platform. All Rights Reserved.</p>
+        </div>
+
+        <!-- Middle Section - Newsletter -->
+        <div class="footer-newsletter">
+          <h3>COMMUNITY INSIGHTS FOR CLEVER SWAPPERS</h3>
+          <h4>DIRECT TO YOUR INBOX</h4>
+          <div class="newsletter-form">
+            <input type="email" placeholder="YOUR E-MAIL" class="newsletter-input">
+            <button class="newsletter-btn">SUBSCRIBE</button>
+          </div>
+        </div>
+
+        <!-- Right Section - Social & Contact -->
+        <div class="footer-contact">
+          <div class="social-section">
+            <h3>FOLLOW US</h3>
+            <div class="social-icons">
+              <a href="#" class="social-icon">📷</a>
+              <a href="#" class="social-icon">👥</a>
+              <a href="#" class="social-icon">🐦</a>
+            </div>
+          </div>
+          <div class="contact-section">
+            <h3>CONTACT US</h3>
+            <p class="contact-info">support@stuffswap.com</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Legal Links -->
+      <div class="footer-legal">
+        <a href="#" class="legal-link">PRIVACY POLICY</a>
+        <a href="#" class="legal-link">TERMS AND CONDITIONS</a>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module">
+    // Import functions from userActions.js
+    import { loadCartItems, removeFromCart, clearCart } from './js/userActions.js';
+    
+    // Cart functionality
+    let cartItems = [];
+
+    // Make functions globally available for onclick handlers
+    window.toggleNav = function() {
+      document.getElementById("navLinks").classList.toggle("show");
+    };
+
+    // Load cart items
+    async function loadCart() {
+      try {
+        // For now, show empty state by default
+        // This will be replaced with actual cart loading logic
+        showEmptyState();
+        
+        // Uncomment the following code when authentication is working:
+        /*
+        showLoadingState();
+        
+        // Get current user
+        const user = await Auth.getCurrentUser();
+        if (!user) {
+          showEmptyState();
+          return;
+        }
+
+        // Load cart items from userActions
+        const items = await loadCartItems(user.id);
+        
+        if (items && items.length > 0) {
+          cartItems = items;
+          displayCartItems();
+        } else {
+          showEmptyState();
+        }
+        */
+      } catch (error) {
+        console.error('Error loading cart:', error);
+        showEmptyState(); // Show empty state instead of error for now
+      }
+    }
+
+    function showLoadingState() {
+      document.getElementById('cartItems').innerHTML = `
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Loading your cart...</p>
+        </div>
+      `;
+      document.getElementById('emptyCart').style.display = 'none';
+      document.getElementById('errorState').style.display = 'none';
+    }
+
+    function showEmptyState() {
+      document.getElementById('cartItems').style.display = 'none';
+      document.getElementById('emptyCart').style.display = 'block';
+      document.getElementById('errorState').style.display = 'none';
+    }
+
+    function showErrorState() {
+      document.getElementById('cartItems').style.display = 'none';
+      document.getElementById('emptyCart').style.display = 'none';
+      document.getElementById('errorState').style.display = 'block';
+    }
+
+    function displayCartItems() {
+      const cartContainer = document.getElementById('cartItems');
+      cartContainer.style.display = 'block';
+      
+      if (cartItems.length === 0) {
+        showEmptyState();
+        return;
+      }
+
+      let cartHTML = '';
+      let totalValue = 0;
+
+      cartItems.forEach((item, index) => {
+        const estimatedValue = item.estimated_value || 25; // Default value
+        totalValue += estimatedValue;
+        
+        cartHTML += `
+          <div class="cart-item" data-item-id="${item.id}">
+            <div class="item-image">
+              <img src="${item.image_url || 'placeholder-image.jpg'}" alt="${item.title}" onerror="this.src='placeholder-image.jpg'">
+            </div>
+            <div class="item-details">
+              <h3>${item.title || 'Untitled Item'}</h3>
+              <p class="item-description">${item.description || 'No description available'}</p>
+              <div class="item-meta">
+                <span class="item-category">${item.category || 'General'}</span>
+                <span class="item-condition">${item.condition || 'Unknown'}</span>
+                <span class="item-value">Est. Value: $${estimatedValue}</span>
+              </div>
+              <div class="item-owner">
+                <span>Owner: ${item.owner_name || 'Unknown'}</span>
+              </div>
+            </div>
+            <div class="item-actions">
+              <button class="remove-btn" onclick="removeFromCartLocal('${item.id}')">Remove</button>
+              <button class="view-btn" onclick="viewItem('${item.id}')">View Details</button>
+            </div>
+          </div>
+        `;
+      });
+
+      cartContainer.innerHTML = cartHTML;
+      
+      // Update summary
+      document.getElementById('itemCount').textContent = cartItems.length;
+      document.getElementById('totalValue').textContent = `$${totalValue}`;
+    }
+
+    async function removeFromCartLocal(itemId) {
+      try {
+        const user = await Auth.getCurrentUser();
+        if (!user) {
+          showToast('Please log in to manage your cart');
+          return;
+        }
+
+        await removeFromCart(user.id, itemId);
+        cartItems = cartItems.filter(item => item.id !== itemId);
+        displayCartItems();
+        
+        showToast('Item removed from cart');
+      } catch (error) {
+        console.error('Error removing from cart:', error);
+        showToast('Error removing item from cart');
+      }
+    }
+
+    async function clearCartItems() {
+      if (confirm('Are you sure you want to clear your cart?')) {
+        try {
+          const user = await Auth.getCurrentUser();
+          if (!user) {
+            showToast('Please log in to manage your cart');
+            return;
+          }
+
+          await clearCart(user.id);
+          cartItems = [];
+          displayCartItems();
+          showToast('Cart cleared');
+        } catch (error) {
+          console.error('Error clearing cart:', error);
+          showToast('Error clearing cart');
+        }
+      }
+    }
+
+    function proceedToSwap() {
+      if (cartItems.length === 0) {
+        alert('Your cart is empty. Add some items first!');
+        return;
+      }
+      
+      // TODO: Implement swap functionality
+      alert('Swap functionality coming soon!');
+    }
+
+    function viewItem(itemId) {
+      // TODO: Navigate to item detail page
+      console.log('Viewing item:', itemId);
+      alert('Item detail page coming soon!');
+    }
+
+    function showToast(message) {
+      // Simple toast notification
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.remove();
+      }, 3000);
+    }
+
+    // Make functions globally available for onclick handlers
+    window.removeFromCartLocal = removeFromCartLocal;
+    window.clearCartItems = clearCartItems;
+    window.proceedToSwap = proceedToSwap;
+    window.viewItem = viewItem;
+    window.showToast = showToast;
+
+    // Load cart when page loads
+    document.addEventListener('DOMContentLoaded', loadCart);
+  </script>
+</body>
+</html> 
