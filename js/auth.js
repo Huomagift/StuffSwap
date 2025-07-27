@@ -15,54 +15,40 @@ async function initializeSupabase() {
 
 // Authentication functions
 async function signUp(email, password, username) {
-  try {
-    const supabase = await initializeSupabase()
-    
-    // First, try to create the user with Supabase Auth
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          username: username
-        }
-      }
-    })
-
-    if (error) {
-      console.error('Sign up error:', error)
-      return { success: false, error: error.message }
-    }
-
-    if (!data.user) {
-      return { success: false, error: 'User creation failed' }
-    }
-
-    // Try to create user profile in the database
     try {
-      const { error: profileError } = await supabase
-        .from('profiles') // Use 'profiles' table instead of 'Users'
-        .insert([{
-          id: data.user.id,
-          username: username,
-          email: email,
-          created_at: new Date().toISOString()
-        }])
+        const supabase = await initializeSupabase();
+        
+        // Sign up the user
+        const { data: { user }, error: signUpError } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                data: {
+                    username: username
+                }
+            }
+        });
 
-      if (profileError) {
-        console.warn('Profile creation failed:', profileError)
-        // Don't fail the signup if profile creation fails
-        // User can update profile later
-      }
-    } catch (profileError) {
-      console.warn('Profile creation error:', profileError)
+        if (signUpError) throw signUpError;
+
+        // Create initial profile
+        const { error: profileError } = await supabase
+            .from('profiles')
+            .insert({
+                id: user.id,
+                username: username,
+                email: email,
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString()
+            });
+
+        if (profileError) throw profileError;
+
+        return { user, error: null };
+    } catch (error) {
+        console.error('Error in signUp:', error);
+        return { user: null, error };
     }
-
-    return { success: true, user: data.user }
-  } catch (error) {
-    console.error('Unexpected error during signup:', error)
-    return { success: false, error: 'An unexpected error occurred' }
-  }
 }
 
 async function signIn(email, password) {
