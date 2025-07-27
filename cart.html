@@ -44,61 +44,105 @@
     <!-- Cart Content -->
     <div class="cart-content">
       <div class="cart-header">
-        <h1>🛒 Shopping Cart</h1>
+        <h1>Cart</h1>
         <p class="cart-subtitle">Items you want to swap</p>
       </div>
 
-      <!-- Cart Items Container -->
-      <div class="cart-container">
-        <div class="cart-items" id="cartItems">
-          <!-- Cart items will be loaded here -->
-          <div class="loading-state">
-            <div class="spinner"></div>
-            <p>Loading your cart...</p>
+      <!-- Main Cart Layout -->
+      <div class="cart-main-layout">
+        <!-- Cart Summary Panel (Left Side) -->
+        <div class="cart-summary-panel">
+          <div class="cart-summary">
+            <h3>Cart Summary</h3>
+            <div class="summary-item">
+              <span>Items:</span>
+              <span id="itemCount">0</span>
+            </div>
+            <div class="summary-item">
+              <span>Total Value:</span>
+              <span id="totalValue">$0</span>
+            </div>
+            <div class="summary-actions">
+              <button class="clear-cart-btn" onclick="clearCartItems()">Clear Cart</button>
+              <button class="checkout-btn" onclick="proceedToSwap()">Proceed to Swap</button>
+            </div>
           </div>
         </div>
 
-        <!-- Cart Summary -->
-        <div class="cart-summary">
-          <h3>Cart Summary</h3>
-          <div class="summary-item">
-            <span>Items:</span>
-            <span id="itemCount">0</span>
+        <!-- Cart Items Area (Right Side) -->
+        <div class="cart-items-area">
+          <!-- Cart Items Container -->
+          <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+            <div class="loading-state">
+              <div class="spinner"></div>
+              <p>Loading your cart...</p>
+            </div>
           </div>
-          <div class="summary-item">
-            <span>Total Value:</span>
-            <span id="totalValue">$0</span>
+
+          <!-- Empty Cart State -->
+          <div class="empty-cart" id="emptyCart" style="display: none;">
+            <div class="empty-icon">🛒</div>
+            <h2>Your cart is empty</h2>
+            <p>Start browsing to find items you love!</p>
+            <button class="browse-btn" onclick="location.href='index.html'">Browse Items</button>
           </div>
-          <div class="summary-actions">
-            <button class="clear-cart-btn" onclick="clearCartItems()">Clear Cart</button>
-            <button class="checkout-btn" onclick="proceedToSwap()">Proceed to Swap</button>
+
+          <!-- Error State -->
+          <div class="error-state" id="errorState" style="display: none;">
+            <div class="error-icon">⚠️</div>
+            <h2>Something went wrong</h2>
+            <p>Unable to load your cart. Please try again.</p>
+            <button class="retry-btn" onclick="loadCart()">Retry</button>
           </div>
         </div>
-      </div>
-
-      <!-- Empty Cart State -->
-      <div class="empty-cart" id="emptyCart" style="display: none;">
-        <div class="empty-icon">🛒</div>
-        <h2>Your cart is empty</h2>
-        <p>Start browsing items to add them to your cart for swapping!</p>
-        <button class="browse-btn" onclick="location.href='index.html'">Browse Items</button>
-      </div>
-
-      <!-- Error State -->
-      <div class="error-state" id="errorState" style="display: none;">
-        <div class="error-icon">⚠️</div>
-        <h2>Something went wrong</h2>
-        <p>Unable to load your cart. Please try again.</p>
-        <button class="retry-btn" onclick="loadCart()">Retry</button>
       </div>
     </div>
 
     <!-- Footer -->
     <footer class="main-footer">
-      <div class="footer-links">
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">Help</a>
+      <div class="footer-content">
+        <!-- Left Section - Branding -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-text">STUFF</span>
+            <span class="logo-accent">SWAP</span>
+          </div>
+          <p class="footer-tagline">Thoughtful swapping for growing communities.</p>
+          <p class="footer-copyright">© 2024 Stuff Swap. Community Exchange Platform. All Rights Reserved.</p>
+        </div>
+
+        <!-- Middle Section - Newsletter -->
+        <div class="footer-newsletter">
+          <h3>COMMUNITY INSIGHTS FOR CLEVER SWAPPERS</h3>
+          <h4>DIRECT TO YOUR INBOX</h4>
+          <div class="newsletter-form">
+            <input type="email" placeholder="YOUR E-MAIL" class="newsletter-input">
+            <button class="newsletter-btn">SUBSCRIBE</button>
+          </div>
+        </div>
+
+        <!-- Right Section - Social & Contact -->
+        <div class="footer-contact">
+          <div class="social-section">
+            <h3>FOLLOW US</h3>
+            <div class="social-icons">
+              <a href="#" class="social-icon">📷</a>
+              <a href="#" class="social-icon">👥</a>
+              <a href="#" class="social-icon">🐦</a>
+            </div>
+          </div>
+          <div class="contact-section">
+            <h3>CONTACT US</h3>
+            <p class="contact-info">support@stuffswap.com</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Legal Links -->
+      <div class="footer-legal">
+        <a href="#" class="legal-link">PRIVACY POLICY</a>
+        <a href="#" class="legal-link">TERMS AND CONDITIONS</a>
       </div>
     </footer>
   </div>
@@ -118,6 +162,12 @@
     // Load cart items
     async function loadCart() {
       try {
+        // For now, show empty state by default
+        // This will be replaced with actual cart loading logic
+        showEmptyState();
+        
+        // Uncomment the following code when authentication is working:
+        /*
         showLoadingState();
         
         // Get current user
@@ -136,9 +186,10 @@
         } else {
           showEmptyState();
         }
+        */
       } catch (error) {
         console.error('Error loading cart:', error);
-        showErrorState();
+        showEmptyState(); // Show empty state instead of error for now
       }
     }
 
