@@ -10,35 +10,37 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <span class="logo-text">Stuff <strong>Swap</strong></span>
-            </div>
-            
-            <div class="search-container">
-                <div class="search-bar">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" placeholder="Search | Category" id="searchInput">
-                    <i class="fas fa-times clear-icon" id="clearSearch"></i>
-                </div>
-            </div>
-            
-            <div class="header-actions">
-                <button class="auth-btn signup">Sign-up</button>
-                <button class="auth-btn login">Log-in</button>
-                <button class="action-btn" id="favoritesBtn">
-                    <i class="fas fa-heart"></i>
-                </button>
-                <button class="action-btn" id="swapRequestsBtn">
-                    <i class="fas fa-exchange-alt"></i>
-                </button>
-                <button class="action-btn" id="profileBtn">
-                    <i class="fas fa-user"></i>
-                </button>
-            </div>
+    <section class="top-bar">
+      <div class="menu-icon" onclick="toggleNav()">☰</div>
+
+      <div class="header-left">
+        <div class="logo"><strong>Stuff</strong> Swap</div>
+        <div class="page-title">Browse</div>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="whatIsStuffSwap.html">About</a>
+        <a href="favorites.html">Favorites</a>
+        <a href="cart.html">Cart</a>
+        <a href="profile.html">Profile</a>
+        <a href="login.html">Login</a>
+      </nav>
+
+      <div class="search-container">
+        <div class="search-bar">
+          <span class="search-icon"><i class="fas fa-search"></i></span>
+          <input type="text" placeholder="Search | Category" id="searchInput">
+          <span class="clear-icon" id="clearSearch"><i class="fas fa-times"></i></span>
         </div>
-    </header>
+      </div>
+
+      <div class="header-icons">
+        <a href="favorites.html" class="icon" id="favoritesBtn" title="Favorites"><i class="fas fa-heart"></i></a>
+        <a href="#" class="icon" id="swapRequestsBtn" title="Swap Requests"><i class="fas fa-exchange-alt"></i></a>
+        <a href="profile.html" class="icon" id="profileBtn" title="Profile"><i class="fas fa-user"></i></a>
+      </div>
+    </section>
 
     <!-- Category Filter Bar -->
     <section class="category-bar">
@@ -108,7 +110,7 @@
                 <!-- Row 1 -->
                 <div class="listing-card">
                     <div class="listing-image">
-                        <img src="/assets/images/SMN Motorbike Helmet.png" alt="Motorbike Helmet">
+                        <img src="assets/images/SMN Motorbike Helmet.png" alt="Motorbike Helmet">
                     </div>
                     <div class="listing-info">
                         <div class="listing-header">
@@ -122,7 +124,7 @@
 
                 <div class="listing-card">
                     <div class="listing-image">
-                        <img src="/assets/images/Beige Livingroom Couch.png" alt="Living Room Couch">
+                        <img src="assets/images/Beige Livingroom Couch.png" alt="Living Room Couch">
                     </div>
                     <div class="listing-info">
                         <div class="listing-header">
@@ -136,7 +138,7 @@
 
                 <div class="listing-card">
                     <div class="listing-image">
-                        <img src="/assets/images/Red Skateboard.png" alt="Red Skateboard">
+                        <img src="assets/images/Red Skateboard.png" alt="Red Skateboard">
                     </div>
                     <div class="listing-info">
                         <div class="listing-header">
@@ -150,7 +152,7 @@
 
                 <div class="listing-card">
                     <div class="listing-image">
-                        <img src="/assets/images/Vintage Mahogany Dresser.png" alt="Vintage Dresser">
+                        <img src="assets/images/Vintage Mahogany Dresser.png" alt="Vintage Dresser">
                     </div>
                     <div class="listing-info">
                         <div class="listing-header">
@@ -165,7 +167,7 @@
                 <!-- Row 2 -->
                 <div class="listing-card">
                     <div class="listing-image">
-                        <img src="/assets/images/Faded Pastel Jeans.png" alt="Faded Jeans">
+                        <img src="assets/images/Faded Pastel Jeans.png" alt="Faded Jeans">
                     </div>
                     <div class="listing-info">
                         <div class="listing-header">
@@ -179,7 +181,7 @@
 
                 <div class="listing-card">
                     <div class="listing-image">
-                        <img src="/assets/images/iPhone 16 Pro.png" alt="iPhone 16 Pro">
+                        <img src="assets/images/iPhone 16 Pro.png" alt="iPhone 16 Pro">
                     </div>
                     <div class="listing-info">
                         <div class="listing-header">
@@ -193,7 +195,7 @@
 
                 <div class="listing-card">
                     <div class="listing-image">
-                        <img src="/assets/images/Netted Leather Cushion Livingroom Chair.png" alt="Leather Chair">
+                        <img src="assets/images/Netted Leather Cushion Livingroom Chair.png" alt="Leather Chair">
                     </div>
                     <div class="listing-info">
                         <div class="listing-header">
@@ -207,7 +209,7 @@
 
                 <div class="listing-card">
                     <div class="listing-image">
-                        <img src="/assets/images/Gray Velvet Sofa.jpeg" alt="Gray Sofa">
+                        <img src="assets/images/Gray Velvet Sofa.jpeg" alt="Gray Sofa">
                     </div>
                     <div class="listing-info">
                         <div class="listing-header">
@@ -222,7 +224,7 @@
                 <!-- Row 3 -->
                 <div class="listing-card">
                     <div class="listing-image">
-                        <img src="/assets/images/Rustic Metallic Lamp.png" alt="Rustic Lamp">
+                        <img src="assets/images/Rustic Metallic Lamp.png" alt="Rustic Lamp">
                     </div>
                     <div class="listing-info">
                         <div class="listing-header">
@@ -236,7 +238,7 @@
 
                 <div class="listing-card">
                     <div class="listing-image">
-                        <img src="/assets/images/Gray Padded Office Chair.png" alt="Office Chair">
+                        <img src="assets/images/Gray Padded Office Chair.png" alt="Office Chair">
                     </div>
                     <div class="listing-info">
                         <div class="listing-header">
@@ -250,7 +252,7 @@
 
                 <div class="listing-card">
                     <div class="listing-image">
-                        <img src="/assets/images/Vintage Clock.png" alt="Vintage Clock">
+                        <img src="assets/images/Vintage Clock.png" alt="Vintage Clock">
                     </div>
                     <div class="listing-info">
                         <div class="listing-header">
@@ -264,7 +266,7 @@
 
                 <div class="listing-card">
                     <div class="listing-image">
-                        <img src="/assets/images/Electric Blue Bicycle.png" alt="Blue Bicycle">
+                        <img src="assets/images/Electric Blue Bicycle.png" alt="Blue Bicycle">
                     </div>
                     <div class="listing-info">
                         <div class="listing-header">
@@ -307,7 +309,7 @@
                         <div class="pin-icon">🪖</div>
                         <div class="pin-tooltip">
                             <div class="tooltip-image">
-                                <img src="/assets/images/SMN Motorbike Helmet.png" alt="Motorbike Helmet">
+                                <img src="assets/images/SMN Motorbike Helmet.png" alt="Motorbike Helmet">
                             </div>
                             <div class="tooltip-content">
                                 <h4>@sportswapper</h4>
@@ -322,7 +324,7 @@
                         <div class="pin-icon">🛋️</div>
                         <div class="pin-tooltip">
                             <div class="tooltip-image">
-                                <img src="/assets/images/Beige Livingroom Couch.png" alt="Living Room Couch">
+                                <img src="assets/images/Beige Livingroom Couch.png" alt="Living Room Couch">
                             </div>
                             <div class="tooltip-content">
                                 <h4>@furnitureguru</h4>
@@ -337,7 +339,7 @@
                         <div class="pin-icon">🛹</div>
                         <div class="pin-tooltip">
                             <div class="tooltip-image">
-                                <img src="/assets/images/Red Skateboard.png" alt="Red Skateboard">
+                                <img src="assets/images/Red Skateboard.png" alt="Red Skateboard">
                             </div>
                             <div class="tooltip-content">
                                 <h4>@skatepro</h4>
@@ -352,7 +354,7 @@
                         <div class="pin-icon">🪑</div>
                         <div class="pin-tooltip">
                             <div class="tooltip-image">
-                                <img src="/assets/images/Vintage Mahogany Dresser.png" alt="Vintage Dresser">
+                                <img src="assets/images/Vintage Mahogany Dresser.png" alt="Vintage Dresser">
                             </div>
                             <div class="tooltip-content">
                                 <h4>@vintagecollector</h4>
@@ -367,7 +369,7 @@
                         <div class="pin-icon">📱</div>
                         <div class="pin-tooltip">
                             <div class="tooltip-image">
-                                <img src="/assets/images/iPhone 16 Pro.png" alt="iPhone 16 Pro">
+                                <img src="assets/images/iPhone 16 Pro.png" alt="iPhone 16 Pro">
                             </div>
                             <div class="tooltip-content">
                                 <h4>@techswapper</h4>
@@ -437,5 +439,10 @@
     </footer>
     
     <script src="js/wireframe-script.js"></script>
+<script>
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('show');
+}
+</script>
 </body>
 </html> 

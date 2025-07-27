@@ -475,78 +475,77 @@ document.head.appendChild(style);
 // --- Dynamic Pagination and Listings ---
 const sampleListings = [
     {
-        image: "https://via.placeholder.com/200x200/446C37/ffffff?text=Helmet",
+        image: "assets/images/SMN Motorbike Helmet.png",
         username: "sportswapper",
         title: "SMN Motorbike Helmet",
         category: "Sports"
     },
     {
-        image: "https://via.placeholder.com/200x200/33512A/ffffff?text=Chair",
+        image: "assets/images/Beige Livingroom Couch.png",
         username: "furnifan",
-        title: "Retro Green Chair",
+        title: "Beige Livingroom Couch",
         category: "Furniture"
     },
     {
-        image: "https://via.placeholder.com/200x200/558745/ffffff?text=Toy",
-        username: "toysrus",
-        title: "Pixel Plush Toy",
-        category: "Toys"
-    },
-    {
-        image: "https://via.placeholder.com/200x200/20331A/ffffff?text=Jacket",
-        username: "clothes4days",
-        title: "Eco Winter Jacket",
-        category: "Clothing"
-    },
-    {
-        image: "https://via.placeholder.com/200x200/CCD5AE/ffffff?text=Blender",
-        username: "appliholic",
-        title: "Kitchen Blender",
-        category: "Appliances"
-    },
-    {
-        image: "https://via.placeholder.com/200x200/66A253/ffffff?text=Lamp",
-        username: "decorator",
-        title: "Rustic Metallic Lamp",
-        category: "Decor"
-    },
-    {
-        image: "https://via.placeholder.com/200x200/FAEDCD/ffffff?text=Clock",
-        username: "timekeeper",
-        title: "Vintage Clock",
-        category: "Decor"
-    },
-    {
-        image: "https://via.placeholder.com/200x200/D4A373/ffffff?text=Sofa",
-        username: "sofalover",
-        title: "Light Gray Livingroom Sofa",
-        category: "Furniture"
-    },
-    {
-        image: "https://via.placeholder.com/200x200/33512A/ffffff?text=Bicycle",
-        username: "cyclist",
-        title: "Electric Blue Bicycle",
+        image: "assets/images/Red Skateboard.png",
+        username: "skatepro",
+        title: "Red Skateboard",
         category: "Sports"
     },
     {
-        image: "https://via.placeholder.com/200x200/E9EDC9/ffffff?text=iPhone",
+        image: "assets/images/Vintage Mahogany Dresser.png",
+        username: "vintagecollector",
+        title: "Vintage Mahogany Dresser",
+        category: "Furniture"
+    },
+    {
+        image: "assets/images/Faded Pastel Jeans.png",
+        username: "fashionista",
+        title: "Faded Pastel Jeans",
+        category: "Clothes"
+    },
+    {
+        image: "assets/images/iPhone 16 Pro.png",
         username: "techswapper",
         title: "iPhone 16 Pro",
         category: "Tech"
     },
     {
-        image: "https://via.placeholder.com/200x200/558745/ffffff?text=Chair",
-        username: "officeguru",
-        title: "Gray Padded Office Chair",
+        image: "assets/images/Netted Leather Cushion Livingroom Chair.png",
+        username: "homeimprover",
+        title: "Netted Leather Cushion Livingroom Chair",
         category: "Furniture"
     },
     {
-        image: "https://via.placeholder.com/200x200/CCD5AE/ffffff?text=Jeans",
-        username: "fashionista",
-        title: "Faded Pastel Jeans",
-        category: "Clothes"
+        image: "assets/images/Gray Velvet Sofa.jpeg",
+        username: "sofalover",
+        title: "Light Gray Livingroom Sofa",
+        category: "Furniture"
+    },
+    {
+        image: "assets/images/Rustic Metallic Lamp.png",
+        username: "decorator",
+        title: "Rustic Metallic Lamp",
+        category: "Decor"
+    },
+    {
+        image: "assets/images/Vintage Clock.png",
+        username: "timekeeper",
+        title: "Vintage Clock",
+        category: "Decor"
+    },
+    {
+        image: "assets/images/Electric Blue Bicycle.png",
+        username: "cyclist",
+        title: "Electric Blue Bicycle",
+        category: "Sports"
+    },
+    {
+        image: "assets/images/Gray Padded Office Chair.png",
+        username: "officeguru",
+        title: "Gray Padded Office Chair",
+        category: "Furniture"
     }
-    // ...add more sample listings as desired...
 ];
 
 const LISTINGS_PER_PAGE = 8;
