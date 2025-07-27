@@ -65,13 +65,54 @@ export async function loadSwapRequests(userId){
 
 export async function loadCartItems(userId){
   try{
-    const response = await fetch(`/api.cartItems?userId=${userId}`);
-    const data = await response.json();
-    console.log('User cart items:', data);
-    return data;
+    console.log('Loading cart items for user:', userId);
+    
+    const supabase = await Auth.initializeSupabase();
+    
+    // Get cart items with item details
+    const { data, error } = await supabase
+      .from('cart')
+      .select(`
+        id,
+        user_id,
+        created_at,
+        items (
+          id,
+          title,
+          description,
+          image_url,
+          category,
+          condition,
+          user_id
+        )
+      `)
+      .eq('user_id', userId);
+    
+    if (error) throw error;
+    
+    // Transform the data to match the expected format
+    const transformedData = data.map(cartItem => ({
+      cart_id: cartItem.id,
+      user_id: cartItem.user_id,
+      added_at: cartItem.created_at,
+      item_id: cartItem.items?.id,
+      title: cartItem.items?.title,
+      description: cartItem.items?.description,
+      image_url: cartItem.items?.image_url,
+      category: cartItem.items?.category,
+      condition: cartItem.items?.condition,
+      item_owner_id: cartItem.items?.user_id,
+      item_owner_name: 'Unknown', // We'll get this from a separate query if needed
+      item_owner_photo: null,
+      estimated_value: 25 // Default estimated value
+    }));
+    
+    console.log('Cart items loaded:', transformedData);
+    return transformedData || [];
+    
   } catch(error) {
     console.error('Error loading cart items:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -212,6 +253,114 @@ export async function getFavoritesCount(userId) {
     
   } catch (error) {
     console.error('Error getting favorites count:', error);
+    return 0;
+  }
+}
+
+// Cart-related functions
+export async function addToCart(userId, itemId) {
+  try {
+    console.log('Adding item to cart:', { userId, itemId });
+    
+    const supabase = await Auth.initializeSupabase();
+    
+    const { data, error } = await supabase
+      .rpc('add_to_cart', {
+        user_uuid: userId,
+        item_uuid: itemId
+      });
+    
+    if (error) throw error;
+    
+    console.log('Item added to cart:', data);
+    return data;
+    
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    throw error;
+  }
+}
+
+export async function removeFromCart(userId, itemId) {
+  try {
+    console.log('Removing item from cart:', { userId, itemId });
+    
+    const supabase = await Auth.initializeSupabase();
+    
+    const { data, error } = await supabase
+      .rpc('remove_from_cart', {
+        user_uuid: userId,
+        item_uuid: itemId
+      });
+    
+    if (error) throw error;
+    
+    console.log('Item removed from cart:', data);
+    return data;
+    
+  } catch (error) {
+    console.error('Error removing from cart:', error);
+    throw error;
+  }
+}
+
+export async function clearCart(userId) {
+  try {
+    console.log('Clearing cart for user:', userId);
+    
+    const supabase = await Auth.initializeSupabase();
+    
+    const { data, error } = await supabase
+      .rpc('clear_user_cart', {
+        user_uuid: userId
+      });
+    
+    if (error) throw error;
+    
+    console.log('Cart cleared, items removed:', data);
+    return data;
+    
+  } catch (error) {
+    console.error('Error clearing cart:', error);
+    throw error;
+  }
+}
+
+export async function isItemInCart(userId, itemId) {
+  try {
+    const supabase = await Auth.initializeSupabase();
+    
+    const { data, error } = await supabase
+      .rpc('is_item_in_cart', {
+        user_uuid: userId,
+        item_uuid: itemId
+      });
+    
+    if (error) throw error;
+    
+    return data;
+    
+  } catch (error) {
+    console.error('Error checking cart status:', error);
+    return false;
+  }
+}
+
+export async function getCartCount(userId) {
+  try {
+    const supabase = await Auth.initializeSupabase();
+    
+    const { data, error } = await supabase
+      .rpc('get_user_cart_count', {
+        user_uuid: userId
+      });
+    
+    if (error) throw error;
+    
+    return data || 0;
+    
+  } catch (error) {
+    console.error('Error getting cart count:', error);
     return 0;
   }
 }
