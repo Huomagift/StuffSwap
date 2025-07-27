@@ -16,27 +16,20 @@
                 <span class="logo-text">Stuff <strong>Swap</strong></span>
             </div>
             
-            <div class="search-container">
-                <div class="search-bar">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" placeholder="Search | Category" id="searchInput">
-                    <i class="fas fa-times clear-icon" id="clearSearch"></i>
-                </div>
-            </div>
-            
-            <div class="header-actions">
-                <button class="auth-btn signup">Sign-up</button>
-                <button class="auth-btn login">Log-in</button>
-                <button class="action-btn" id="favoritesBtn">
-                    <i class="fas fa-heart"></i>
-                </button>
-                <button class="action-btn" id="swapRequestsBtn">
-                    <i class="fas fa-exchange-alt"></i>
-                </button>
-                <button class="action-btn" id="profileBtn">
-                    <i class="fas fa-user"></i>
-                </button>
-            </div>
+     
+            <nav class="main-navbar">
+    <button class="swap-btn" id="swapBtn">
+        <i class="fas fa-exchange-alt"></i> Swap
+    </button>
+</nav>
+<!-- Swap Dropdown/Popup -->
+<div id="swapDropdown" class="swap-dropdown" style="display: none; position: absolute; right: 30px; top: 60px; background: #fff; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000;">
+    <ul style="list-style: none; margin: 0; padding: 1em;">
+        <li><a href="requests.html">Requests</a></li>
+        <li><a href="accepted-swaps.html">Accepted Swaps</a></li>
+        <li><a href="chats.html">Chats</a></li>
+    </ul>
+</div>
         </div>
     </header>
 
@@ -437,5 +430,19 @@
     </footer>
     
     <script src="js/wireframe-script.js"></script>
+    <script>
+    // Swap Button Dropdown Logic
+    const swapBtn = document.getElementById('swapBtn');
+    const swapDropdown = document.getElementById('swapDropdown');
+    document.addEventListener('click', function(e) {
+        if (swapBtn && swapDropdown) {
+            if (swapBtn.contains(e.target)) {
+                swapDropdown.style.display = swapDropdown.style.display === 'none' ? 'block' : 'none';
+            } else if (!swapDropdown.contains(e.target)) {
+                swapDropdown.style.display = 'none';
+            }
+        }
+    });
+</script>
 </body>
 </html> 
