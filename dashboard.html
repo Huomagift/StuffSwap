@@ -28,7 +28,7 @@
             </nav>
 
             <div class="header-left">
-                <div class="page-title">Home</div>
+                <div class="page-title">Dashboard</div>
                 <div class="logo"><strong>Stuff</strong> Swap</div>
             </div>
 
@@ -41,7 +41,7 @@
             <div class="header-icons">
                 <a href="favorites.html" class="icon">❤️</a>
                 <a href="cart.html" class="icon">🛒</a>
-                <a href="profile.html" class="icon">👤</a>
+                <a href="wireframe-version.html" class="icon">🔁</a>
             </div>
         </section>
 
@@ -260,6 +260,42 @@
             document.getElementById("navLinks").classList.toggle("show");
         }
     </script>
+    <script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    await Auth.initializeSupabase();
+    const user = await Auth.getCurrentUser();
+
+    const nav = document.getElementById("navLinks");
+
+    if (user) {
+      // Remove Login link
+      const loginLink = [...nav.children].find(link => link.textContent.trim() === "Login");
+      if (loginLink) loginLink.remove();
+
+      // Update Profile link text
+      const profileLink = [...nav.children].find(link => link.textContent.trim() === "Profile");
+      if (profileLink) {
+        profileLink.textContent = user.user_metadata?.username || "My Profile";
+      }
+
+      // Add Logout link
+      const logoutLink = document.createElement("a");
+      logoutLink.href = "#";
+      logoutLink.textContent = "Logout";
+      logoutLink.onclick = async (e) => {
+        e.preventDefault();
+        await Auth.signOut();
+        window.location.reload();
+      };
+      nav.appendChild(logoutLink);
+    }
+  });
+
+  function toggleNav() {
+    document.getElementById("navLinks").classList.toggle("show");
+  }
+</script>
+
 </body>
 
 </html>
